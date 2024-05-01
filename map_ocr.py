@@ -173,8 +173,6 @@ if __name__ == '__main__':
         # output : group_list
         print( "* Text grouping ~" )
         group, group_num = group_place_name( x_min_list, y_min_list, x_max_list, y_max_list )
-
-        shutil.rmtree( args.output_folder + "/detection" )
         
         # 7. standard output
         # input : "{image_name}.txt" in "{output_folder}/detection" and recognition_list
@@ -207,3 +205,4 @@ if __name__ == '__main__':
         print('- Total number of text detections : ' + str( len( x_min_list ) ) )
         print('- Total number of group : ' + str( group_num ) )
         print('- Execution time : ' + str( datetime.strptime(str(end - start)[:-7], "%H:%M:%S") )[14:] )
+    shutil.rmtree( args.output_folder + "/detection" )
