@@ -188,6 +188,7 @@ def remove_overlap( x_max_list, x_min_list, y_max_list, y_min_list, recognition_
   
 def remove_num_char( x_max_list, x_min_list, y_max_list, y_min_list, recognition_list, merge_label ) :
   for j in range( len(x_max_list)-1, -1, -1 ) :
+    if recognition_list[j] == 'x' : break
     if ( recognition_list[j] >= '0' and recognition_list[j] <= '9') or ( recognition_list[j] >= 'A' and recognition_list[j] <= 'Z')  or ( recognition_list[j] >= 'a' and recognition_list[j] <= 'z') :
       del x_max_list[j]
       del x_min_list[j]
