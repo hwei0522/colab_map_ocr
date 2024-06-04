@@ -15,14 +15,23 @@ def crop_image( input_path, image_name, save_path, output_width, output_height, 
     crop_num = 1
     width = img.shape[0]
     height = img.shape[1]
+    print(width,height)
         
     now_x = 0
-    while now_x < width :
-      if now_x + output_width > width : now_x = width - output_width
+    while now_x < width : 
+      if now_x + output_width > width : now_x = width - output_width 
+      if now_x < 0 : 
+        now_x = 0
+        output_width = width
+
       now_y = 0
       while now_y < height :
         if now_y + output_height > height : now_y = height - output_height
-
+        if now_y < 0 : 
+          now_y = 0
+          output_height = height
+        
+        print( now_x, now_x+output_width, now_y, now_y+output_height )
         cv2.imwrite( save_path + "/" + image_name[:-4] + "_" + str(crop_num) + ".jpg", img[ now_x:now_x+output_width, now_y:now_y+output_height ] )
         crop_num += 1
 
